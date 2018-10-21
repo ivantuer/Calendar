@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.contInside{
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.contInside>div{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.year-container{
+    display: flex;
+    align-items: flex-start;
+    width: 4793px;
+    position: absolute;
+    left: -700px;
+    transition: left .3s;
+}
+.year-wrapper{
+    overflow: hidden;
+    position: relative;
+    width: 704px;
+    height: 842px;
+}
+.months-and-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#container>p {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.contDiv{
+    display: inline-block;
+    margin-right: 25px;
+    margin-left: 25px;
+    border: 1px solid #000;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+}
+
+
+.yellow{
+    background: yellow;
+}
+.red{
+    background: red;
+}
+.blue{
+    background: blue;
+}
+.contDiv>p{
+text-align: center;
+width: 100%;
+}
+
+
+</style>
+<body>
+    <div id="container">
+        
+    </div>
+
+    <script src="./indexClass.js"></script>
+</body>
+</html>
