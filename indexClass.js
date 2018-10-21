@@ -108,7 +108,8 @@ class GenerateOnPage {
     const todo = document.createElement("p");
     todo.innerText =
       myPlace[index].todo === undefined ? "" : myPlace[index].todo;
-    stupidDiv.className = myPlace[index].todo !== undefined ? "blue" : "";
+    stupidDiv.className =
+      myPlace[index].todo && myPlace[index].todo !== "" ? "blue" : "";
     stupidDiv.appendChild(p);
     stupidDiv.appendChild(todo);
 
@@ -126,16 +127,32 @@ class GenerateOnPage {
     }
     if (dayElement !== "-") {
       stupidDiv.ondblclick = () => {
-        const input = document.createElement("input");
-
-        if (!stupidDiv.querySelector("input")) {
+        const input = document.createElement("textarea");
+        if (!stupidDiv.querySelector("textarea")) {
+          if (myPlace[index].todo) {
+            input.value = myPlace[index].todo;
+            stupidDiv.querySelectorAll("p")[1] && stupidDiv.removeChild(todo);
+          }
           stupidDiv.appendChild(input);
         }
         window.onclick = e => {
+          console.log(stupidDiv.contains(e.target));
           if (!stupidDiv.contains(e.target)) {
-            stupidDiv.removeChild(input);
+            stupidDiv.contains(input) && stupidDiv.removeChild(input);
+            stupidDiv.appendChild(todo);
+            if (input.value !== "" && !myPlace[index].dayElement) {
+              myPlace[index] = {
+                dayElement,
+                todo: input.value
+              };
+            }
+            localStorage.setItem(
+              "hasCodeRunBefore",
+              JSON.stringify(this.globalArr)
+            );
+            window.onclick = "";
+            this.generate();
           }
-          window.onclick = "";
         };
         input.onkeydown = e => {
           if (e.keyCode === 13) {
@@ -144,7 +161,7 @@ class GenerateOnPage {
                 dayElement,
                 todo: e.target.value
               };
-            }
+            } else myPlace[index].todo = e.target.value;
             stupidDiv.removeChild(input);
             localStorage.setItem(
               "hasCodeRunBefore",
@@ -226,6 +243,7 @@ class GenerateOnPage {
     let days = document.createElement("div");
     daysOfWeek.forEach(e => {
       let div = document.createElement("div");
+      div.className = "gray";
       let p = document.createElement("p");
       p.innerText = e.substr(0, 3);
       div.appendChild(p);

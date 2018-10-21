@@ -7,10 +7,13 @@
     <title>Document</title>
 </head>
 <style>
+
+    body{
+        font-family: arial, helvetica, sans-serif;
+    }
 .contInside{
     display: flex;
     align-items: center;
-
     
 }
 
@@ -21,6 +24,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gray{
+    border: none;
+    background: #D9CFCC;
+}
+.contInside>div>p:last-child{
+    overflow: scroll;
+    text-align: left;
+}
+
+.contInside>div>p{
+    margin-top: 10px;
 }
 
 .year-container{
@@ -40,6 +58,16 @@
 .months-and-buttons{
     display: flex;
     justify-content: space-between;
+    font-size: 25px;
+}
+
+.months-and-buttons p{
+    margin: 5px 0;
+}
+
+.months-and-buttons button{
+    background: #3DD3A6;
+    
 }
 
 #container{
@@ -61,24 +89,34 @@
     border: 1px solid #000;
     margin-bottom: 100px;
     box-sizing: border-box;
+
+
 }
 
 
 .yellow{
-    background: yellow;
+    background: #FFCB8C;
 }
 .red{
-    background: red;
+    background: #6698AA;
 }
 .blue{
-    background: blue;
+    background: lightblue;
+    color:white;
+}
+.blue p{
+    width: 100%;
+    margin: 0;
 }
 .contDiv>p{
 text-align: center;
 width: 100%;
 }
-input{
+textarea{
     width: 100%;
+    font-size: 14px;
+    height: 70px;
+    background: inherit;
     box-sizing: border-box;
 }
 
