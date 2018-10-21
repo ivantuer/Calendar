@@ -124,32 +124,39 @@ class GenerateOnPage {
     ) {
       stupidDiv.classList.add("yellow");
     }
-    stupidDiv.ondblclick = () => {
-      const input = document.createElement("input");
+    if (dayElement !== "-") {
+      stupidDiv.ondblclick = () => {
+        const input = document.createElement("input");
 
-      if (!stupidDiv.querySelector("input")) {
-        stupidDiv.appendChild(input);
-      }
-
-      input.onkeydown = e => {
-        if (e.keyCode === 13) {
-          if (!myPlace[index].dayElement) {
-            myPlace[index] = {
-              dayElement,
-              todo: e.target.value
-            };
-          }
-          stupidDiv.removeChild(input);
-          localStorage.setItem(
-            "hasCodeRunBefore",
-            JSON.stringify(this.globalArr)
-          );
-          this.generate();
+        if (!stupidDiv.querySelector("input")) {
+          stupidDiv.appendChild(input);
         }
-      };
-      todo.className = "suka";
-    };
+        window.onclick = e => {
+          if (!stupidDiv.contains(e.target)) {
+            stupidDiv.removeChild(input);
+          }
+          window.onclick = "";
+        };
+        input.onkeydown = e => {
+          if (e.keyCode === 13) {
+            if (!myPlace[index].dayElement) {
+              myPlace[index] = {
+                dayElement,
+                todo: e.target.value
+              };
+            }
+            stupidDiv.removeChild(input);
+            localStorage.setItem(
+              "hasCodeRunBefore",
+              JSON.stringify(this.globalArr)
+            );
+            this.generate();
+          }
+        };
 
+        todo.className = "suka";
+      };
+    }
     div.appendChild(stupidDiv);
   }
 
